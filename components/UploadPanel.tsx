@@ -60,6 +60,7 @@ export default function UploadPanel({ mode, onResult, onOpenGuide }: Props) {
           body: JSON.stringify({ filename: file.name, contentType: file.type, size: file.size }),
         });
         const data = await res.json();
+        if (!res.ok) throw new Error(data.error || `서버 오류 ${res.status}`);
         addLog(`2. Presigned URL 수신 (서버 처리: ${data.serverProcessingMs}ms, 만료: ${data.expiresIn}s)`);
         setPresignedUrl(data.url);
 
