@@ -18,7 +18,7 @@ export async function GET(req: NextRequest) {
     serverDataBytes: 0,
     steps: [
       { from: "Browser", to: "Server", label: "GET /api/presigned/download?key=...", bytes: 50 },
-      { from: "Server", to: "AWS IAM", label: "HMAC 서명 생성", bytes: 0 },
+      { from: "Server", to: "Server", label: "HMAC-SHA256 서명 계산 (로컬 연산)", bytes: 0 },
       { from: "Server", to: "Browser", label: "Presigned URL 반환", bytes: url.length },
       { from: "Browser", to: "S3", label: "GET 파일 직접 다운로드", bytes: -1 },
     ],

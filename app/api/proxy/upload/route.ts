@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
   return NextResponse.json({
     key,
     serverProcessingMs,
-    serverDataBytes: buffer.length, // 서버가 전체 파일 받아서 S3로 재전송
+    serverDataBytes: buffer.length,
     steps: [
       { from: "Browser", to: "Server", label: `POST /api/proxy/upload (전체 파일 ${(buffer.length / 1024).toFixed(1)}KB)`, bytes: buffer.length },
       { from: "Server", to: "S3", label: `PutObject (${(buffer.length / 1024).toFixed(1)}KB 재전송)`, bytes: buffer.length },
