@@ -4,9 +4,8 @@ import { useState } from "react";
 import UploadPanel from "@/components/UploadPanel";
 import AnimatedFlow from "@/components/AnimatedFlow";
 import MetricsBar from "@/components/MetricsBar";
-import SecurityPanel from "@/components/SecurityPanel";
 import FileList from "@/components/FileList";
-import UserExperiencePanel from "@/components/UserExperiencePanel";
+import ExcelDownloadPanel from "@/components/ExcelDownloadPanel";
 import GuideModal, { GuideSection } from "@/components/GuideModal";
 
 export type Step = {
@@ -91,11 +90,8 @@ export default function Home() {
         {/* 애니메이션 */}
         <AnimatedFlow presignedResult={presignedResult} proxyResult={proxyResult} />
 
-        {/* 사용자 경험 */}
-        <UserExperiencePanel />
-
-        {/* 보안 비교 */}
-        <SecurityPanel onOpenGuide={openGuide} />
+        {/* 엑셀 비동기 다운로드 */}
+        <ExcelDownloadPanel />
 
         {/* 파일 목록 */}
         {uploadedKeys.length > 0 && (
